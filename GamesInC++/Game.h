@@ -19,11 +19,14 @@ public:
 private:
 	Game() :
 		isRunning(true),
-		ballPos({100,100}),
-		ballVelocity({500,500}),
-		paddlePos({50,100}),
-		paddleVelocity({0,450}),
-		paddleDirection(0),
+		ballPos({ 100,100 }),
+		ballVelocity({ 300,300 }),
+		paddleLeftPos({ 50,100 }),
+		paddleLeftVelocity({ 0,450 }),
+		paddleLeftDirection(0),
+		paddleRightPos({ 718,100 }),
+		paddleRightVelocity({ 0,450 }),
+		paddleRightDirection(0),
 		wallThickness(10),
 		topWall(Rectangle()),
 		bottomWall(Rectangle()),
@@ -54,9 +57,14 @@ private:
 	Vector2 ballVelocity;
 	const float ballSize = 10;
 
-	Vector2 paddlePos;
-	Vector2 paddleVelocity;
+	Vector2 paddleLeftPos;
+	Vector2 paddleLeftVelocity;
+	float paddleLeftDirection;
+
+	Vector2 paddleRightPos;
+	Vector2 paddleRightVelocity;
+	float paddleRightDirection;
+
 	const float paddleWidth = 10;
 	const float paddleHeigth = 64;
-	float paddleDirection;
 };
