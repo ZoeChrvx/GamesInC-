@@ -1,4 +1,8 @@
-﻿  Game.cpp
+﻿  Actor.cpp
+  Game.cpp
   Main.cpp
+  Renderer.cpp
+  Vector2.cpp
   Generating Code...
+  LINK : D:\Prog\C++\GamesInC++\x64\Debug\GamesInC++.exe not found or not built by the last incremental link; performing full link
   GamesInC++.vcxproj -> D:\Prog\C++\GamesInC++\x64\Debug\GamesInC++.exe

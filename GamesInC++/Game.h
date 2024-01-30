@@ -2,6 +2,8 @@
 #include "Window.h"
 #include "Renderer.h"
 #include "Vector2.h"
+#include "Actor.h"
+using std::vector;
 
 class Game
 {
@@ -19,18 +21,7 @@ public:
 private:
 	Game() :
 		isRunning(true),
-		ballPos({ 100,100 }),
-		ballVelocity({ 300,300 }),
-		paddleLeftPos({ 50,100 }),
-		paddleLeftVelocity({ 0,450 }),
-		paddleLeftDirection(0),
-		paddleRightPos({ 718,100 }),
-		paddleRightVelocity({ 0,450 }),
-		paddleRightDirection(0),
-		wallThickness(10),
-		topWall(Rectangle()),
-		bottomWall(Rectangle()),
-		rightWall(Rectangle())
+		isUpdatingActors(false)
 	{}
 
 public:
@@ -38,33 +29,19 @@ public:
 	void Loop();
 	void Close();
 
+	void AddActor(Actor* actor);
+	void RemoveActor(Actor* actor);
 
 private:
 	void ProcessInput();
 	void Update(float dt);
 	void Render();
 
+	bool isRunning;
 	Renderer renderer;
 	Window window;
-	bool isRunning;
 
-	Rectangle topWall;
-	Rectangle bottomWall;
-	Rectangle rightWall;
-	const float wallThickness = 10;
-
-	Vector2 ballPos;
-	Vector2 ballVelocity;
-	const float ballSize = 10;
-
-	Vector2 paddleLeftPos;
-	Vector2 paddleLeftVelocity;
-	float paddleLeftDirection;
-
-	Vector2 paddleRightPos;
-	Vector2 paddleRightVelocity;
-	float paddleRightDirection;
-
-	const float paddleWidth = 10;
-	const float paddleHeigth = 64;
+	bool isUpdatingActors;
+	vector<Actor*> actors;
+	vector<Actor*> pendingActors;
 };

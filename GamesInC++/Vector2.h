@@ -6,7 +6,7 @@ struct Vector2
 
 	float x;
 	float y;
-	//static const Vector2 zero;
+	static const Vector2 zero;
 
 	Vector2& operator+=(const Vector2& right)
 	{
