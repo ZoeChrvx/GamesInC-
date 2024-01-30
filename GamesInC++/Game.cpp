@@ -9,7 +9,7 @@ bool Game::Initialize() {
 	int windowHeigth = window.getHeigth();
 	topWall = { 0,0,static_cast<float>(windowWidth), wallThickness };
 	bottomWall = { 0, windowHeigth - wallThickness, static_cast<float>(windowWidth), wallThickness };
-	//rightWall = { windowWidth - wallThickness,0,wallThickness,static_cast<float>(windowHeigth) };
+	midWall = { (float)windowWidth / 2,0,wallThickness,static_cast<float>(windowHeigth) };
 
 	return isWindowInit && isRendererInit; //Ca retourne des bool jusqu'à trouver une erreur
 }
@@ -135,9 +135,9 @@ void Game::Update(float dt) {
 void Game::Render() {
 	renderer.BeginDraw();
 
+	renderer.DrawRectOpacityLow(midWall);
 	renderer.DrawRect(topWall);
 	renderer.DrawRect(bottomWall);
-	//renderer.DrawRect(rightWall);
 
 	Rectangle ballRect = { ballPos.x - ballSize / 2,ballPos.y - ballSize / 2,ballSize,ballSize };
 	renderer.DrawRect(ballRect);

@@ -13,6 +13,7 @@ public:
 	bool Initialize(Window& window);
 	void BeginDraw();
 	void DrawRect(Rectangle& rect);
+	void DrawRectOpacityLow(Rectangle& rect);
 	void EndDraw();
 	void Close();
 

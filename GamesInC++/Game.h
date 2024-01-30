@@ -30,7 +30,7 @@ private:
 		wallThickness(10),
 		topWall(Rectangle()),
 		bottomWall(Rectangle()),
-		rightWall(Rectangle())
+		midWall(Rectangle())
 	{}
 
 public:
@@ -50,7 +50,7 @@ private:
 
 	Rectangle topWall;
 	Rectangle bottomWall;
-	Rectangle rightWall;
+	Rectangle midWall;
 	const float wallThickness = 10;
 
 	Vector2 ballPos;

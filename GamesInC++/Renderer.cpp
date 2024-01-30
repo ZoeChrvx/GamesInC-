@@ -15,7 +15,7 @@ bool Renderer::Initialize(Window& window) {
 }
 
 void Renderer::BeginDraw() {
-	SDL_SetRenderDrawColor(SDLRenderer, 120, 120, 255, 255);
+	SDL_SetRenderDrawColor(SDLRenderer, 3, 252, 219, 255);
 	SDL_RenderClear(SDLRenderer);
 }
 
@@ -25,6 +25,12 @@ void Renderer::EndDraw() {
 
 void Renderer::DrawRect(Rectangle& rect) {
 	SDL_SetRenderDrawColor(SDLRenderer, 255, 255, 255, 255);
+	SDL_Rect SDLRect = rect.toSDLRect();
+	SDL_RenderFillRect(SDLRenderer, &SDLRect);
+}
+
+void Renderer::DrawRectOpacityLow(Rectangle& rect) {
+	SDL_SetRenderDrawColor(SDLRenderer, 171, 245, 235, 128);
 	SDL_Rect SDLRect = rect.toSDLRect();
 	SDL_RenderFillRect(SDLRenderer, &SDLRect);
 }
