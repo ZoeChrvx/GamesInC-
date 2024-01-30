@@ -1,7 +1,6 @@
 ﻿  Game.cpp
   Main.cpp
-  Renderer.cpp
+  Timer.cpp
   Vector2.cpp
-  Window.cpp
   Génération de code en cours...
   GamesInC++.vcxproj -> D:\Artfx\Programmation\C++\GamesInC-\x64\Debug\GamesInC++.exe

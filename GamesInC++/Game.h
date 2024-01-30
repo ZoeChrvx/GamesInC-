@@ -35,9 +35,10 @@ public:
 	void Loop();
 	void Close();
 
+
 private:
 	void ProcessInput();
-	void Update();
+	void Update(float dt);
 	void Render();
 
 	Renderer renderer;
