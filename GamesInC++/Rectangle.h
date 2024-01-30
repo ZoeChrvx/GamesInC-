@@ -5,14 +5,14 @@ struct Rectangle {
 	float x;
 	float y;
 	float width;
-	float heigth;
+	float height;
 
 	SDL_Rect toSDLRect() const {
 		return SDL_Rect{
 			static_cast<int>(x),
 			static_cast<int>(y),
 			static_cast<int>(width),
-			static_cast<int>(heigth)
+			static_cast<int>(height)
 		};
 	}
 };

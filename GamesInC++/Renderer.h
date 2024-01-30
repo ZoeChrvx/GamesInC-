@@ -16,6 +16,10 @@ public:
 	void EndDraw();
 	void Close();
 
+
+	inline SDL_Renderer* toSDLRenderer() const { return SDLRenderer; }
+
+
 private:
 	SDL_Renderer* SDLRenderer = nullptr;
 };

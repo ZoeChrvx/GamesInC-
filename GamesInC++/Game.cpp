@@ -1,14 +1,27 @@
 #include "Game.h"
 #include "Timer.h"
+#include "Assets.h"
 
 bool Game::Initialize() {
 	bool isWindowInit = window.Initialize();
 	bool isRendererInit = renderer.Initialize(window);
 
 	int windowWidth = window.getWidth();
-	int windowHeigth = window.getHeigth();
+	int windowHeight = window.getHeight();
 
 	return isWindowInit && isRendererInit; //Ca retourne des bool jusqu'à trouver une erreur
+}
+
+void Game::Load() {
+	Assets::loadTexture(renderer, "Res/Ship01.png", "ship01");
+}
+
+void Game::Unload() {
+	while (!actors.empty()) {
+		delete actors.back();
+	}
+
+	Assets::Clear();
 }
 
 void Game::Loop() {

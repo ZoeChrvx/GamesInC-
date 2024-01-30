@@ -16,11 +16,11 @@ public:
 
 	SDL_Window* getSDLWindow()const { return SDLWindow; }
 	int getWidth() const { return width; }
-	int getHeigth() const { return heigth; }
+	int getHeight() const { return height; }
 
 private:
 	SDL_Window* SDLWindow;
 	int width;
-	int heigth;
+	int height;
 };
 
