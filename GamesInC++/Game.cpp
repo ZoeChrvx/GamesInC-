@@ -1,5 +1,7 @@
 #include "Game.h"
 #include "Timer.h"
+#include <iostream>
+using namespace std;
 
 bool Game::Initialize() {
 	bool isWindowInit = window.Initialize();
@@ -110,13 +112,15 @@ void Game::Update(float dt) {
 		&& ballVelocity.x < 0) {
 		ballVelocity.x *= -1;
 		ballPos.x = paddleLeftPos.x + paddleWidth / 2 + ballSize / 2;
+		cout << "gauche" << endl;
 	}
 	Vector2 diffRight = ballPos - paddleRightPos;
 	if (fabsf(diffRight.y) <= paddleHeigth / 2
 		&& fabsf(diffRight.x) <= paddleWidth / 2 + ballSize / 2
-		&& ballVelocity.x < 0) {
+		&& ballVelocity.x > 0) {
 		ballVelocity.x *= -1;
 		ballPos.x = paddleRightPos.x + paddleWidth / 2 + ballSize / 2;
+		cout << "droite" << endl;
 	}
 
 	//Restart automatically
