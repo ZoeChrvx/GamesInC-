@@ -14,6 +14,9 @@ bool Game::Initialize() {
 
 void Game::Load() {
 	Assets::loadTexture(renderer, "Res/Ship01.png", "ship01");
+	auto actor = new Actor();
+	auto sprite = new SpriteComponent(actor, Assets::getTexture("ship01"));
+	actor->SetPosition(Vector2{ 100,100 });
 }
 
 void Game::Unload() {
@@ -83,7 +86,7 @@ void Game::Update(float dt) {
 
 void Game::Render() {
 	renderer.BeginDraw();
-
+	renderer.Draw();
 	renderer.EndDraw();
 }
 

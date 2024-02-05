@@ -3,6 +3,7 @@
 #include "Renderer.h"
 #include "Vector2.h"
 #include "Actor.h"
+#include "SpriteComponent.h"
 using std::vector;
 
 class Game
@@ -17,6 +18,8 @@ public:
 	Game& operator =(const Game&) = delete;
 	Game(Game&&) = delete;
 	Game& operator=(Game&&) = delete;
+
+	Renderer& getRenderer() { return renderer; }
 
 private:
 	Game() :
