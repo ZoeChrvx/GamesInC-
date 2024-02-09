@@ -1,4 +1,9 @@
-﻿  SpriteComponent.cpp
-Actor.obj : error LNK2019: symbole externe non résolu "public: __cdecl Renderer::~Renderer(void)" (??1Renderer@@QEAA@XZ) référencé dans la fonction "int `private: __cdecl Game::Game(void)'::`1'::dtor$0" (?dtor$0@?0???0Game@@AEAA@XZ@4HA)
-Main.obj : error LNK2001: symbole externe non résolu "public: __cdecl Renderer::~Renderer(void)" (??1Renderer@@QEAA@XZ)
-D:\Artfx\Programmation\C++\GamesInC-\x64\Debug\GamesInC++.exe : fatal error LNK1120: 1 externes non résolus
+﻿  Actor.cpp
+  Assets.cpp
+  Game.cpp
+  Main.cpp
+  Renderer.cpp
+  SpriteComponent.cpp
+  Texture.cpp
+  Génération de code en cours...
+  GamesInC++.vcxproj -> D:\Artfx\Programmation\C++\GamesInC-\x64\Debug\GamesInC++.exe

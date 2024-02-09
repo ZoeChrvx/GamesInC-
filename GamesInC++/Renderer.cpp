@@ -9,6 +9,8 @@ Renderer::Renderer() :SDLRenderer(nullptr) {
 
 }
 
+
+
 bool Renderer::Initialize(Window& window) {
 	SDLRenderer = SDL_CreateRenderer(window.getSDLWindow(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (!SDLRenderer) {
