@@ -9,7 +9,7 @@ Texture Assets::loadTexture(Renderer& renderer, const string& filename, const st
 	return textures[name];
 }
 
-Texture& Assets::getTexture(const string& name) {
+Texture& Assets::GetTexture(const string& name) {
 	if (textures.find(name) == end(textures)) {
 		std::ostringstream loadError;
 		loadError << "Texture " << name << " does not exist in assets manager.";

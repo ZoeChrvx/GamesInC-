@@ -12,7 +12,7 @@ public:
 
 	static Texture loadTexture(Renderer& renderer, const string& filename, const string& name);
 
-	static Texture& getTexture(const std::string& name);
+	static Texture& GetTexture(const std::string& name);
 
 	static void Clear();
 

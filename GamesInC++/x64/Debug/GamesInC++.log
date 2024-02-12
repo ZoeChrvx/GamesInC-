@@ -1,9 +1,2 @@
-﻿  Actor.cpp
-  Assets.cpp
-  Game.cpp
-  Main.cpp
-  Renderer.cpp
-  SpriteComponent.cpp
-  Texture.cpp
-  Génération de code en cours...
+﻿  Window.cpp
   GamesInC++.vcxproj -> D:\Artfx\Programmation\C++\GamesInC-\x64\Debug\GamesInC++.exe

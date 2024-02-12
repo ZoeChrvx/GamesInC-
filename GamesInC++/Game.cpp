@@ -1,6 +1,10 @@
 #include "Game.h"
+#include "Actor.h"
+#include "SpriteComponent.h"
+#include "AnimSpriteComponent.h"
 #include "Timer.h"
 #include "Assets.h"
+#include "BackgroundSpriteComponent.h"
 
 bool Game::Initialize() {
 	bool isWindowInit = window.Initialize();
@@ -13,10 +17,50 @@ bool Game::Initialize() {
 }
 
 void Game::Load() {
-	Assets::loadTexture(renderer, "Res/Ship01.png", "ship01");
+	//Textures
+	Assets::loadTexture(renderer, "Res/Ship01.png", "Ship01");
+	Assets::loadTexture(renderer, "Res/Ship02.png", "Ship02");
+	Assets::loadTexture(renderer, "Res/Ship03.png", "Ship03");
+	Assets::loadTexture(renderer, "Res/Ship04.png", "Ship04");
+	Assets::loadTexture(renderer, "Res/Farback01.png", "Farback01");
+	Assets::loadTexture(renderer, "Res/Farback02", "Farback02");
+	Assets::loadTexture(renderer, "Res/Stars.png", "Stars");
+
+	/*
 	auto actor = new Actor();
-	auto sprite = new SpriteComponent(actor, Assets::getTexture("ship01"));
+	auto sprite = new SpriteComponent(actor, Assets::getTexture("Ship01"));
 	actor->SetPosition(Vector2{ 100,100 });
+	*/
+
+	//Sprite Animé
+	vector<Texture*> animTextures{
+		&Assets::GetTexture("Ship01"),
+		&Assets::GetTexture("Ship02"),
+		&Assets::GetTexture("Ship03"),
+		&Assets::GetTexture("Ship04")
+	};
+	Actor* ship = new Actor();
+	AnimSpriteComponent* animatedSprite = new AnimSpriteComponent(ship, animTextures);
+	ship->SetPosition(Vector2{ 100,300 });
+
+	//Background
+	//"Far" BG
+	vector<Texture*> bgTextsFar{
+		&Assets::GetTexture("Farback01"),
+		&Assets::GetTexture("Farback02")
+	};
+	Actor* bgFar = new Actor();
+	BackgroundSpriteComponent* bgSpritesFar = new BackgroundSpriteComponent(bgFar, bgTextsFar);
+	bgSpritesFar->SetScrollSpeed(-100.0f);
+
+	//"Close" BG
+	Actor* bgClose = new Actor();
+	std::vector<Texture*> bgTextsClose{
+		&Assets::GetTexture("Stars"),
+		&Assets::GetTexture("Stars")
+	};
+	BackgroundSpriteComponent* bgSpritesClose = new BackgroundSpriteComponent(bgClose, bgTextsClose);
+	bgSpritesClose->SetScrollSpeed(-200.0f);
 }
 
 void Game::Unload() {
