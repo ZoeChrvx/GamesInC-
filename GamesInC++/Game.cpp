@@ -5,6 +5,8 @@
 #include "Timer.h"
 #include "Assets.h"
 #include "BackgroundSpriteComponent.h"
+#include "Astroid.h"
+#include "Ship.h"
 
 bool Game::Initialize() {
 	bool isWindowInit = window.Initialize();
@@ -18,19 +20,21 @@ bool Game::Initialize() {
 
 void Game::Load() {
 	//Textures
-	Assets::loadTexture(renderer, "Res/Ship01.png", "Ship01");
-	Assets::loadTexture(renderer, "Res/Ship02.png", "Ship02");
-	Assets::loadTexture(renderer, "Res/Ship03.png", "Ship03");
-	Assets::loadTexture(renderer, "Res/Ship04.png", "Ship04");
-	Assets::loadTexture(renderer, "Res/Farback01.png", "Farback01");
-	Assets::loadTexture(renderer, "Res/Farback02", "Farback02");
-	Assets::loadTexture(renderer, "Res/Stars.png", "Stars");
+	Assets::LoadTexture(renderer, "Res/Ship.png", "Ship");
+	/*Assets::LoadTexture(renderer, "Res/Ship01.png", "Ship01");
+	Assets::LoadTexture(renderer, "Res/Ship02.png", "Ship02");
+	Assets::LoadTexture(renderer, "Res/Ship03.png", "Ship03");
+	Assets::LoadTexture(renderer, "Res/Ship04.png", "Ship04");*/
+	Assets::LoadTexture(renderer, "Res/Farback01.png", "Farback01");
+	Assets::LoadTexture(renderer, "Res/Farback02", "Farback02");
+	Assets::LoadTexture(renderer, "Res/Stars.png", "Stars");
+	Assets::LoadTexture(renderer, "Res/Astroid.png", "Astroid");
 
 	/*
 	auto actor = new Actor();
 	auto sprite = new SpriteComponent(actor, Assets::getTexture("Ship01"));
 	actor->SetPosition(Vector2{ 100,100 });
-	*/
+	
 
 	//Sprite Animé
 	vector<Texture*> animTextures{
@@ -38,9 +42,10 @@ void Game::Load() {
 		&Assets::GetTexture("Ship02"),
 		&Assets::GetTexture("Ship03"),
 		&Assets::GetTexture("Ship04")
-	};
-	Actor* ship = new Actor();
-	AnimSpriteComponent* animatedSprite = new AnimSpriteComponent(ship, animTextures);
+	};*/
+
+	//Ship
+	Ship* ship = new Ship();
 	ship->SetPosition(Vector2{ 100,300 });
 
 	//Background
@@ -61,6 +66,11 @@ void Game::Load() {
 	};
 	BackgroundSpriteComponent* bgSpritesClose = new BackgroundSpriteComponent(bgClose, bgTextsClose);
 	bgSpritesClose->SetScrollSpeed(-200.0f);
+
+	const int astroidNumber = 20;
+	for (int i = 0; i < astroidNumber; ++i) {
+		new Astroid();
+	}
 }
 
 void Game::Unload() {
@@ -103,6 +113,13 @@ void Game::ProcessInput() {
 
 	//Assignation des touches
 	const Uint8* keyboardState = SDL_GetKeyboardState(nullptr);
+	
+	//Actor Input
+	isUpdatingActors = true;
+	for (auto actor : actors) {
+		actor->ProcessInput(keyboardState);
+	}
+	isUpdatingActors = false;
 }
 
 void Game::Update(float dt) {
@@ -119,7 +136,7 @@ void Game::Update(float dt) {
 
 	vector<Actor*> deadActors;
 	for (auto actor : actors) {
-		if (actor->getState() == Actor::ActorState::Dead) {
+		if (actor->GetState() == Actor::ActorState::Dead) {
 			deadActors.emplace_back(actor);
 		}
 	}

@@ -51,9 +51,9 @@ void Renderer::DrawSprites() {
 
 void Renderer::DrawSprite(const Actor& actor, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const {
 	SDL_Rect dstRect;
-	Vector2 position = actor.getPosition();
-	float rotation = actor.getRotation();
-	float scale = actor.getScale();
+	Vector2 position = actor.GetPosition();
+	float rotation = actor.GetRotation();
+	float scale = actor.GetScale();
 
 	dstRect.w = static_cast<int>(tex.getWidth() * scale);
 	dstRect.h = static_cast<int>(tex.getHeigth() * scale);

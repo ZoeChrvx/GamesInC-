@@ -4,13 +4,17 @@
 Component::Component(Actor* ownerP, int updateOrderP) :
 	owner(*ownerP),
 	updateOrder(updateOrderP) {
-	owner.addComponent(this);
+	owner.AddComponent(this);
 }
 
 Component::~Component() {
-	owner.removeComponent(this);
+	owner.RemoveComponent(this);
 }
 
 void Component::Update(float dt) {
 
+}
+
+void Component::ProcessInput(const Uint8* keyState)
+{
 }

@@ -4,7 +4,7 @@
 
 std::map<std::string, Texture> Assets::textures;
 
-Texture Assets::loadTexture(Renderer& renderer, const string& filename, const string& name) {
+Texture Assets::LoadTexture(Renderer& renderer, const string& filename, const string& name) {
 	textures[name] = loadTextureFromFile(renderer, filename.c_str());
 	return textures[name];
 }

@@ -6,12 +6,50 @@ struct Vector2
 
 	float x;
 	float y;
+
 	static const Vector2 zero;
+	static const Vector2 unitX;
+	static const Vector2 unitY;
+
+	void Set(float xP, float yP);
+	float LengthSq() const;
+	float Length() const;
+	void Normalize();
+
+	static Vector2 Normalize(const Vector2& vec) {
+		Vector2 temp = vec;
+		temp.Normalize();
+		return temp;
+	}
+
+	static float Dot(const Vector2& a, const Vector2& b) {
+		return a.x * b.x + a.y * b.y;
+	}
+
+	static Vector2 Lerp(const Vector2& a, const Vector2& b, float f) {
+		return Vector2(a + f * (b - a));
+	}
+
+	friend Vector2 operator+(const Vector2& left, const Vector2& right) {
+		return Vector2(left.x + right.x, left.y + right.y);
+	}
+
+	Vector2& operator-=(const Vector2 right) {
+		x -= right.x;
+		y -= right.y;
+		return *this;
+	}
 
 	Vector2& operator+=(const Vector2& right)
 	{
 		x += right.x;
 		y += right.y;
+		return *this;
+	}
+
+	Vector2& operator*=(float scalar) {
+		x *= scalar;
+		y *= scalar;
 		return *this;
 	}
 

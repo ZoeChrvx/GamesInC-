@@ -9,11 +9,11 @@ SpriteComponent::SpriteComponent(Actor* ownerP, Texture& textureP, int drawOrder
 	texWidth(textureP.getWidth()),
 	texHeight(textureP.getHeigth()) 
 {
-	owner.getGame().getRenderer().AddSprite(this);
+	owner.GetGame().getRenderer().AddSprite(this);
 }
 
 SpriteComponent::~SpriteComponent() {
-	owner.getGame().getRenderer().RemoveSprite(this);
+	owner.GetGame().getRenderer().RemoveSprite(this);
 }
 
 void SpriteComponent::SetTexture(const Texture& textureP) {

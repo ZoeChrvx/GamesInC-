@@ -2,6 +2,7 @@
 #include <algorithm>
 #include "Game.h"
 #include "Component.h"
+#include "Maths.h"
 
 Actor::Actor() :
 	state(ActorState::Active),
@@ -17,6 +18,11 @@ Actor::~Actor() {
 	while (!components.empty()) {
 		delete components.back();
 	}
+}
+
+Vector2 Actor::GetForward() const
+{
+	return Vector2(Maths::cos(rotation), -Maths::sin(rotation));
 }
 
 void Actor::SetPosition(Vector2 positionP) {
@@ -48,7 +54,7 @@ void Actor::UpdateActor(float dt) {
 
 }
 
-void Actor::addComponent(Component* component) {
+void Actor::AddComponent(Component* component) {
 	int myOrder = component->getUpdateOrder();
 	auto iter = begin(components);
 	for (; iter != end(components); ++iter) {
@@ -60,11 +66,25 @@ void Actor::addComponent(Component* component) {
 
 }
 
-void Actor::removeComponent(Component* component){
+void Actor::RemoveComponent(Component* component){
 	auto iter = std::find(begin(components), end(components), component);
 	if (iter != end(components)) {
 		components.erase(iter);
 	}
+}
+
+void Actor::ProcessInput(const Uint8* keyState)
+{
+	if (state == Actor::ActorState::Active) {
+		for (auto component : components) {
+			component->ProcessInput(keyState);
+		}
+		ActorInput(keyState);
+	}
+}
+
+void Actor::ActorInput(const Uint8* keyState)
+{
 }
 
 

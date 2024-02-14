@@ -17,7 +17,7 @@ namespace Maths {
 		return radians * 180.0f / pi;
 	}
 
-	inline bool nearZero(float val, float epsilon = 0.001f) {
+	inline bool NearZero(float val, float epsilon = 0.001f) {
 		if (fabs(val) <= epsilon) {
 			return true;
 		}

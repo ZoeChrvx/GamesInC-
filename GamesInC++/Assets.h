@@ -10,7 +10,7 @@ class Assets
 public:
 	static std::map<std::string, Texture> textures;
 
-	static Texture loadTexture(Renderer& renderer, const string& filename, const string& name);
+	static Texture LoadTexture(Renderer& renderer, const string& filename, const string& name);
 
 	static Texture& GetTexture(const std::string& name);
 
